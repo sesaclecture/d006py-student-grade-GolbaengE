@@ -34,7 +34,7 @@ def subject_average(student_scores: dict, subjects: list):
     rows = [list(map(float, score)) for score in student_scores.values()] # 학생들의 점수들을 실수화하여 리스트로 정리 ex) [(학생A 점수들), (학생B 점수들)...]
     cols = list(zip(*rows)) # 과목별 점수들을 리스트로 정리, 행 리스트가 하나가 아닌 여러개이므로 *를 붙여야한다. ex) [(국어점수들), (수학점수들)...]
     n = len(rows) #학생 인원
-    return {sub : round(sum(col) / n, 2) for sub, col in zip(subjects, cols)} #[과목, 과목 점수 함계] = [sub, cols]로 바꿔 과목 : 평균값을 차례대로 나열
+    return {sub : sum(col) / n for sub, col in zip(subjects, cols)} #[과목, 과목 점수 함계] = [sub, cols]로 바꿔 과목 : 평균값을 차례대로 나열
 
 
 
@@ -45,7 +45,7 @@ def subject_average(student_scores: dict, subjects: list):
 
 
 def student_average(student_scores: dict):
-    ave = ((n, round(sum(map(float, s)) / len(s), 2)) for n, s in student_scores.items()) #학생이름과 그 학생의 점수들을 실수로 바꿔 다 합친 다음 점수 갯수로 나누어 이름, 평균값인 튜플로 나타냄
+    ave = ((n, sum(map(float, s)) / len(s), 2) for n, s in student_scores.items()) #학생이름과 그 학생의 점수들을 실수로 바꿔 다 합친 다음 점수 갯수로 나누어 이름, 평균값인 튜플로 나타냄
     return sorted(ave, key = lambda x: x[1], reverse = True) # 점수별 내림차수 정렬
 
     """
