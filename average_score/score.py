@@ -45,7 +45,7 @@ def subject_average(student_scores: dict, subjects: list):
 
 
 def student_average(student_scores: dict):
-    ave = ((n, sum(map(float, s)) / len(s), 2) for n, s in student_scores.items()) #학생이름과 그 학생의 점수들을 실수로 바꿔 다 합친 다음 점수 갯수로 나누어 이름, 평균값인 튜플로 나타냄
+    ave = ((n, sum(map(float, s)) / len(s)) for n, s in student_scores.items()) #학생이름과 그 학생의 점수들을 실수로 바꿔 다 합친 다음 점수 갯수로 나누어 이름, 평균값인 튜플로 나타냄
     return sorted(ave, key = lambda x: x[1], reverse = True) # 점수별 내림차수 정렬
 
     """
